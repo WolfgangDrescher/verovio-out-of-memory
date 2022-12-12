@@ -8,7 +8,7 @@ const meiFiles = [
     'https://raw.githubusercontent.com/WolfgangDrescher/lassus-geistliche-psalmen/master/kern/04-cum-invocarem.krn',
 ];
 
-const num = ref(1);
+const num = ref(0);
 
 function loadScores() {
     num.value += 10;
@@ -24,6 +24,6 @@ const scoreNumbers = computed(() => {
     <button @click="loadScores">Load 10 scores</button>
     <template v-for="n in scoreNumbers" :key="n">
         <h1>{{ n }}</h1>
-        <VerovioScore :url="meiFiles[(n -1) % meiFiles.length]" />
+        <VerovioScore :url="meiFiles[n % meiFiles.length]" />
     </template>
 </template>
