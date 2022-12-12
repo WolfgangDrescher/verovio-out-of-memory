@@ -1,29 +1,29 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
+import { ref, computed } from 'vue';
+import VerovioScore from './components/VerovioScore.vue'
+const meiFiles = [
+    'https://raw.githubusercontent.com/WolfgangDrescher/lassus-geistliche-psalmen/master/kern/01-beatus-vir.krn',
+    'https://raw.githubusercontent.com/WolfgangDrescher/lassus-geistliche-psalmen/master/kern/02-quare-fremuerunt-gentes.krn',
+    'https://raw.githubusercontent.com/WolfgangDrescher/lassus-geistliche-psalmen/master/kern/03-domine-quid-multiplicati.krn',
+    'https://raw.githubusercontent.com/WolfgangDrescher/lassus-geistliche-psalmen/master/kern/04-cum-invocarem.krn',
+];
+
+const num = ref(1);
+
+function loadScores() {
+    num.value += 10;
+    console.log(scoreNumbers.value);
+}
+
+const scoreNumbers = computed(() => {
+    return [...Array(10).keys()].map(x => x + num.value);
+});
 </script>
 
 <template>
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
-  </div>
-  <HelloWorld msg="Vite + Vue" />
+    <button @click="loadScores">Load 10 scores</button>
+    <template v-for="n in scoreNumbers" :key="n">
+        <h1>{{ n }}</h1>
+        <VerovioScore :url="meiFiles[(n -1) % meiFiles.length]" />
+    </template>
 </template>
-
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
-</style>
