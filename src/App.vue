@@ -12,7 +12,6 @@ const num = ref(0);
 
 function loadScores() {
     num.value += 10;
-    console.log(scoreNumbers.value);
 }
 
 const scoreNumbers = computed(() => {
