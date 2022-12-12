@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "verovio": "^3.13.1-1",
     "vue": "^3.2.45"
   },
   "devDependencies": {
