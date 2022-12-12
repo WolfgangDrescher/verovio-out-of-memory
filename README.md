@@ -1,5 +1,7 @@
 # verovio-out-of-memory
 
+Minimal reproduction repository for https://github.com/rism-digital/verovio/issues/3161
+
 1. Clone this repo and cd into it
 2. `npm install`
 3. `npm run dev`
